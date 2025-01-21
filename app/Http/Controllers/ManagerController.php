@@ -47,7 +47,7 @@ class ManagerController extends Controller
     {
         $request->validate([
             'NamaAM' => 'required|string|max:255',
-            'NoHP' => 'required|string|max:15',
+            'NoHP' => 'required|string|max:255',
             'Email' => 'required|email|max:255',
             'IdTelegram' => 'required|string|max:255',
         ]);
@@ -63,8 +63,8 @@ class ManagerController extends Controller
 
     public function destroy(Manager $NIKAM)
     {
-        $NIKAM->delete();
         try {
+            $NIKAM->delete();
             return redirect()->route('admin.manager.index')->with('success', 'Data berhasil dihapus.');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Terjadi kesalahan.');

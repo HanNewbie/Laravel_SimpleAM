@@ -58,7 +58,7 @@
                 <input type="text" name="EmailCust" id="EmailCust" class="form-control" value="{{ old('EmailCust', $datacustomer->EmailCust) }}" required>
             </div>
 
-            <button type="submit" class="btn btn-primary">Update Data</button>
+            <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
         </form>
     </div>
 </div>

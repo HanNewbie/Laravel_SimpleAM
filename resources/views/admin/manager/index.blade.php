@@ -79,11 +79,10 @@
                                     });
                                 });
                             </script>
-
                         </tr>
                         @empty
                             <tr>
-                                <td colspan="8" class="text-center">Data Kosong</td>
+                                <td colspan="10" class="text-center">Data Kosong</td>
                             </tr>
                     @endforelse
                 </tbody>

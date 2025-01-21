@@ -18,7 +18,7 @@
                         <th>Alamat Customer</th>
                         <th>Nama PIC</th>
                         <th>No HP PIC</th>
-                        <th>NIKAM</th>
+                        <th>NAMA AM</th>
                         <th>Email Customer</th>
                         <th>Aksi</th>
                     </tr>

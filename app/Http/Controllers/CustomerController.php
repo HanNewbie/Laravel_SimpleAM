@@ -76,8 +76,8 @@ class CustomerController extends Controller
 
     public function destroy(Customer $NoBilling)
     {
-        $NoBilling->delete();
         try {
+            $NoBilling->delete();
             return redirect()->route('admin.customer.index')->with('success', 'Data berhasil dihapus.');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Terjadi kesalahan.');

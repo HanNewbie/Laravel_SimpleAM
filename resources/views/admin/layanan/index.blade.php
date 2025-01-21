@@ -4,7 +4,7 @@
 <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
         <h3>Daftar Layanan</h3>
-        {{-- <a href="{{route('admin.cars.create')}}" class="btn btn-primary">Tambah Data</a> --}}
+        <a href="{{route('admin.layanan.create')}}" class="btn btn-primary ms-auto">Tambah Data</a>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -18,6 +18,7 @@
                         <th>Bandwith</th>
                         <th>Satuan</th>
                         <th>Nilai Layanan</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,18 +30,59 @@
                             <td>{{$lyn->ProdName}}</td>
                             <td>{{$lyn->Bandwidth}}</td>
                             <td>{{$lyn->Satuan}}</td>
-                            <td>{{$lyn->NilaiLayanan}}</td>
-                            {{-- <a href="{{route('admin.cars.edit', $car->id)}}" class="btn btn-sm btn-warning">Edit</a>
-                            <form onclick="return confirm('Yakin dihapus?')" class="d-inline" action="{{route('admin.cars.destroy', $car->id)}}" method="post">
-                                @csrf
-                                @method('delete')
-                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                            </form> 
-                            </td> --}}
+                            <td>{{number_format($lyn->NilaiLayanan, 0, ',', '.')}}</td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <a href="{{ route('admin.layanan.edit', $lyn->SID) }}" class="btn btn-warning btn-sm" style="margin-right: 10px;">Edit</a>
+                                     <button 
+                                            type="button" 
+                                            class="btn btn-danger btn-sm delete-button" 
+                                            data-id="{{ $lyn->SID }}">Delete</button>
+                                     <form 
+                                            id="delete-form-{{ $lyn->SID }}" 
+                                            action="{{ route('admin.layanan.destroy', $lyn->SID) }}" 
+                                            method="POST" 
+                                            style="display: none;">
+                                            @csrf
+                                            @method('DELETE')
+                                     </form>
+                                </div>
+                            </td>
+
+                            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function () {
+                                    const deleteButtons = document.querySelectorAll('.delete-button');
+                                    deleteButtons.forEach(button => {
+                                        button.addEventListener('click', function () {
+                                            const orderId = this.getAttribute('data-id');
+                                            Swal.fire({
+                                                title: "Yakin dihapus?",
+                                                text: "Data yang dihapus tidak dapat dikembalikan!",
+                                                icon: "warning",
+                                                showCancelButton: true,
+                                                confirmButtonColor: "#3085d6",
+                                                cancelButtonColor: "#d33",
+                                                confirmButtonText: "Ya, Hapus!",
+                                                cancelButtonText: "Batal"
+                                            }).then((result) => {
+                                                if (result.isConfirmed) {
+                                                    document.getElementById(`delete-form-${orderId}`).submit();
+                                                    Swal.fire({
+                                                        title: "Berhasil Dihapus!",
+                                                        text: "Data Berhasil Dihapus",
+                                                        icon: "success"
+                                                    });
+                                                }
+                                            });
+                                        });
+                                    });
+                                });
+                            </script>
                         </tr>
                         @empty
                             <tr>
-                                <td colspan="6" class="text-center">Data Kosong</td>
+                                <td colspan="7" class="text-center">Data Kosong</td>
                             </tr>
                     @endforelse
                 </tbody>
