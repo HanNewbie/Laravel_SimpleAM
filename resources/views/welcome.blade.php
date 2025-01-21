@@ -25,13 +25,14 @@
                         <th>SEGMEN</th>
                         <th>Nama AM</th>
                         <th>Nama Customer</th>
-                        <th>No HP</th>
+                        <th>No Kontrak</th>
                         <th>SID</th>
                         <th>NO Billing</th>
                         <th>Layanan</th>
                         <th>Alamat</th>
                         <th>Nama PIC</th>
-                        <th>Masa Kontrak</th>
+                        <th>No HP PIC</th>
+                        <th>Habis Masa Kontrak</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -40,21 +41,33 @@
                             <td>{{$loop->iteration}}</td>
                             <td>{{$dt->NamaSegmen}}</td>
                             <td>{{$dt->NamaAM}}</td>
-                            <td>{{$dt->NamaCust}}</td>
-                            <td>{{$dt->NoHP}}</td>
+                            <td>{{$dt->NamaCust	}}</td>
+                            <td>{{$dt->NoKontrak}}</td>
                             <td>{{$dt->SID}}</td>
                             <td>{{$dt->NoBilling}}</td>
                             <td>{{$dt->ProdName}}</td>
                             <td>{{$dt->AlamatCust}}</td>
                             <td>{{$dt->NamaPIC}}</td>
-                            <td>{{$dt->FirstDate}} - {{$dt->EndDate}} </td>
+                            <td>{{$dt->NoHPPIC}}</td>
+                            <td>{{$dt->EndDate}}</td>
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="11" class="text-center">Data Kosong</td>
+                            <td colspan="12" class="text-center">Data Kosong</td>
                         </tr>
                     @endforelse
                 </tbody>
+
+                <style>
+                    .table-bordered tbody tr:nth-child(odd) {
+                        background-color: #f3f3f3; /* Warna abu muda */
+                    }
+                
+                    .table-bordered tbody tr:nth-child(even) {
+                        background-color: #ffffff; /* Warna putih */
+                    }
+                </style>
+
             </table>
         </div>
     </div>

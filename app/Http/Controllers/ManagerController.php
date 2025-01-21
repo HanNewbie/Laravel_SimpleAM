@@ -14,7 +14,6 @@ class ManagerController extends Controller
        return view('admin.manager.index', ['accountmanager'=>$accountmanager]);
     }
 
-
     public function create()
     {
         $segmen = Segmen::all();
@@ -23,18 +22,22 @@ class ManagerController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'NIKAM' => 'required|unique:accountmanager,NIKAM',
-            'NamaAM' => 'required',
-            'IdSegmen' => 'required|exists:segmen,IdSegmen',
-            'NoHP' => 'required',
-            'Email' => 'required|email',
-            'IdTelegram' => 'required',
-        ]);
+        try {
+            $request->validate([
+                'NIKAM' => 'required|unique:accountmanager,NIKAM',
+                'NamaAM' => 'required',
+                'IdSegmen' => 'required|exists:segmen,IdSegmen',
+                'NoHP' => 'required',
+                'Email' => 'required|email',
+                'IdTelegram' => 'required',
+            ]);
 
-        Manager::create($request->all());
+            Manager::create($request->all());
 
-        return redirect()->route('admin.manager.index')->with('success', 'Data Manager berhasil ditambahkan.');
+            return redirect()->route('admin.manager.index')->with('success', 'Data Manager berhasil ditambahkan.');
+        } catch (\Exception $e) {
+             return redirect()->back()->with('error', 'Gagal menyimpan data: ' . $e->getMessage());
+        }
     }
 
     public function edit($NIKAM)
@@ -45,14 +48,14 @@ class ManagerController extends Controller
 
     public function update(Request $request, $NIKAM)
     {
-        $request->validate([
-            'NamaAM' => 'required|string|max:255',
-            'NoHP' => 'required|string|max:255',
-            'Email' => 'required|email|max:255',
-            'IdTelegram' => 'required|string|max:255',
-        ]);
-
         try {
+            $request->validate([
+                'NamaAM' => 'required|string|max:255',
+                'NoHP' => 'required|string|max:255',
+                'Email' => 'required|email|max:255',
+                'IdTelegram' => 'required|string|max:255',
+            ]);
+
             $accountmanager = Manager::findOrFail($NIKAM);
             $accountmanager->update($request->all());
             return redirect()->route('admin.manager.index')->with('success', 'Data manager berhasil diperbarui.');

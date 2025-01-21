@@ -86,6 +86,17 @@
                             </tr>
                     @endforelse
                 </tbody>
+
+                <style>
+                    .table-bordered tbody tr:nth-child(odd) {
+                        background-color: #f3f3f3; /* Warna abu muda */
+                    }
+                
+                    .table-bordered tbody tr:nth-child(even) {
+                        background-color: #ffffff; /* Warna putih */
+                    }
+                </style>
+
             </table>
         </div>
     </div>

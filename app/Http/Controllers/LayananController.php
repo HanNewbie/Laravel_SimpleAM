@@ -22,18 +22,22 @@ class LayananController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'NoBilling' => 'required|exists:datacustomer,NoBilling',
-            'SID' => 'required|exists|unique:layanan,SID',
-            'ProdName' => 'required|string|max:255',
-            'Bandwidth' => 'required|numeric',
-            'Satuan' => 'required|string|max:50',
-            'NilaiLayanan' => 'required|numeric',
-        ]);
+        try {
+            $validatedData = $request->validate([
+                'NoBilling' => 'required|exists:datacustomer,NoBilling', 
+                'SID' => 'required|unique:layanan,SID',
+                'ProdName' => 'required',
+                'Bandwidth' => 'required',
+                'Satuan' => 'required',
+                'NilaiLayanan' => 'required|numeric|min:0',
+            ]);
 
-        Layanan::create($request->all());
+            $layanan = Layanan::create($validatedData);
 
-        return redirect()->route('admin.layanan.index')->with('success', 'Data layanan berhasil ditambahkan.');
+            return redirect()->route('admin.layanan.index')->with('success', 'Data layanan berhasil ditambahkan.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Gagal menyimpan data: ' . $e->getMessage());
+        }
     }
     
     public function edit($SID)
@@ -48,9 +52,9 @@ class LayananController extends Controller
         $request->validate([
             'NoBilling' => 'required|exists:datacustomer,NoBilling',
             'ProdName' => 'required|string|max:255',
-            'Bandwidth' => 'required|numeric',
+            'Bandwidth' => 'required|numeri|cmax:255',
             'Satuan' => 'required|string|max:50',
-            'NilaiLayanan' => 'required|numeric',
+            'NilaiLayanan' => 'required|numeric|max:255',
         ]);
 
         try {

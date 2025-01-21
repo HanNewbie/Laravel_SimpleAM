@@ -23,24 +23,28 @@ class KontrakController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'NoKontrak' => 'required|string|max:255',
-            'NoBilling' => 'required|exists:datacustomer,NoBilling',
-            'FirstDate' => 'required|date',
-            'EndDate' => 'required|date',
-    ]);
+        try {
+            $request->validate([
+                'NoKontrak' => 'required|string|max:255',
+                'NoBilling' => 'required|exists:datacustomer,NoBilling',
+                'FirstDate' => 'required|date',
+                'EndDate' => 'required|date',
+            ]);
 
-        $randomId = mt_rand(100000, 999999); 
+            $randomId = mt_rand(100000, 999999); 
 
-        while (Kontrak::where('Id', $randomId)->exists()) {
-            $randomId = mt_rand(100000, 999999);
+            while (Kontrak::where('Id', $randomId)->exists()) {
+                $randomId = mt_rand(100000, 999999);
+            }
+
+            $request['Id'] = $randomId;
+
+            Kontrak::create($request->all());
+
+            return redirect()->route('admin.kontrak.index')->with('success', 'Data kontrak berhasil ditambahkan');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Gagal menyimpan data: ' . $e->getMessage());
         }
-
-        $request['Id'] = $randomId;
-
-        Kontrak::create($request->all());
-
-        return redirect()->route('admin.kontrak.index')->with('success', 'Data kontrak berhasil ditambahkan');
     }
 
     public function edit($Id)
