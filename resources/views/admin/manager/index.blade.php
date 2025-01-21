@@ -3,7 +3,7 @@
 @section('main-content')
 <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
-        <h3>Daftar Manager</h3>
+        <h3>Daftar Account Manager</h3>
         <a href="{{route('admin.manager.create')}}" class="btn btn-primary ms-auto">Tambah Data</a>
     </div>
     <div class="card-body">

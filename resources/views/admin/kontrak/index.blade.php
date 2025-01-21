@@ -26,7 +26,7 @@
                             <td>{{$loop->iteration}}</td>
                             <td>{{$ktk->Id}}</td>
                             <td>{{$ktk->NoKontrak}}</td>
-                            <td>{{$ktk->NoBilling}}</td>
+                            <td>{{$ktk->NoBilling}} - {{$ktk->datacustomer->NamaCust}}</td>
                             <td>{{$ktk->FirstDate}}</td>
                             <td>{{$ktk->EndDate}}</td>
                             <td>

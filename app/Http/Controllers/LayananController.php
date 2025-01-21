@@ -10,7 +10,7 @@ class LayananController extends Controller
 {
     public function index()
     {
-       $layanan = Layanan::all();
+       $layanan = Layanan::with('datacustomer')->get();
        return view('admin.layanan.index', ['layanan'=>$layanan]);
     }
 
@@ -49,20 +49,21 @@ class LayananController extends Controller
 
     public function update(Request $request, $SID)
     {
-        $request->validate([
-            'NoBilling' => 'required|exists:datacustomer,NoBilling',
-            'ProdName' => 'required|string|max:255',
-            'Bandwidth' => 'required|numeri|cmax:255',
-            'Satuan' => 'required|string|max:50',
-            'NilaiLayanan' => 'required|numeric|max:255',
-        ]);
-
         try {
+            $request->validate([
+                'NoBilling' => 'required|exists:datacustomer,NoBilling',
+                'ProdName' => 'required|string|max:255',
+                'Bandwidth' => 'required|numeric|min:0',
+                'Satuan' => 'required|string|min:0',
+                'NilaiLayanan' => 'required|numeric|min:0',
+            ]);
+
+        
             $layanan = Layanan::findOrFail($SID);
             $layanan->update($request->all());
             return redirect()->route('admin.layanan.index')->with('success', 'Data Layanan berhasil diperbarui.');
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Terjadi kesalahan saat memperbarui data.');
+            return redirect()->back()->with('error', 'Terjadi kesalahan saat memperbarui data: ' . $e->getMessage());
         }
     }
 

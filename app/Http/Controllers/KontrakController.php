@@ -11,7 +11,7 @@ class KontrakController extends Controller
 {
     public function index()
     {
-       $kontrak = Kontrak::all();
+       $kontrak = Kontrak::with('datacustomer')->get();
        return view('admin.kontrak.index', ['kontrak'=>$kontrak]);
     }
 

@@ -17,7 +17,9 @@ return new class extends Migration
             $table->string('ProdName', 100)->nullable();
             $table->string('Bandwidth', 10)->nullable();
             $table->string('Satuan', 10)->nullable();
+            $table->integer('Jumlah', 10)->nullable();
             $table->decimal('NilaiLayanan', 15, 0)->nullable();
+            $table->string('Deskripsi', 100)->nullable();
 
             $table->foreign('NoBilling')->references('NoBilling')->on('datacustomer')->onDelete('set null');
         });

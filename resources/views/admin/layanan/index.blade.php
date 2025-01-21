@@ -25,7 +25,7 @@
                     @forelse($layanan as $lyn)
                         <tr>
                             <td>{{$loop->iteration}}</td>
-                            <td>{{$lyn->NoBilling}}</td>
+                            <td>{{$lyn->NoBilling}} - {{$lyn->datacustomer->NamaCust}}</td>
                             <td>{{$lyn->SID}}</td>
                             <td>{{$lyn->ProdName}}</td>
                             <td>{{$lyn->Bandwidth}}</td>
@@ -99,4 +99,4 @@
         </div>
     </div>
 </div>
-@endsection
+@endsection 

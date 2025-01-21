@@ -15,7 +15,7 @@
                 <select name="NoBilling" class="form-control" id="NoBilling" required>
                     <option value="">--PILIH NO BILLING--</option>
                     @foreach($NoBilling as $nbl)
-                        <option value="{{ $nbl->NoBilling }}">{{ $nbl->NoBilling }}</option>
+                        <option value="{{ $nbl->NoBilling }}">{{ $nbl->NoBilling }} - {{ $nbl->NamaCust }}</option>
                     @endforeach
                 </select>
             </div>
@@ -37,8 +37,14 @@
 
             <div class="form-group">
                 <label for="Satuan">Satuan</label>
-                <input type="text" name="Satuan" id="Satuan" class="form-control" value="{{ old('Satuan') }}" required>
-            </div>
+                <select name="Satuan" id="Satuan" class="form-control" required>
+                    <option value="">--Pilih Satuan--</option>
+                    <option value="MBPS" {{ old('Satuan') == 'MBPS' ? 'selected' : '' }}>MBPS</option>
+                    <option value="PAKET" {{ old('Satuan') == 'PAKET' ? 'selected' : '' }}>PAKET</option>
+                    <option value="UNIT" {{ old('Satuan') == 'UNIT' ? 'selected' : '' }}>UNIT</option>
+                    <option value="ORANG" {{ old('Satuan') == 'ORANG' ? 'selected' : '' }}>ORANG</option>
+                </select>
+            </div>            
 
             <div class="form-group">
                 <label for="NilaiLayanan">Nilai Layanan</label>

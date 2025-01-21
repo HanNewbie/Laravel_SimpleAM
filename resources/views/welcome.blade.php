@@ -25,13 +25,12 @@
                         <th>SEGMEN</th>
                         <th>Nama AM</th>
                         <th>Nama Customer</th>
-                        <th>No Kontrak</th>
+                        <th>Nama PIC</th>
+                        <th>No HP PIC</th>
                         <th>SID</th>
                         <th>NO Billing</th>
                         <th>Layanan</th>
-                        <th>Alamat</th>
-                        <th>Nama PIC</th>
-                        <th>No HP PIC</th>
+                        <th>Nilai Layanan</th>
                         <th>Habis Masa Kontrak</th>
                     </tr>
                 </thead>
@@ -42,13 +41,12 @@
                             <td>{{$dt->NamaSegmen}}</td>
                             <td>{{$dt->NamaAM}}</td>
                             <td>{{$dt->NamaCust	}}</td>
-                            <td>{{$dt->NoKontrak}}</td>
+                            <td>{{$dt->NamaPIC}}</td>
+                            <td>{{$dt->NoHPPIC}}</td>
                             <td>{{$dt->SID}}</td>
                             <td>{{$dt->NoBilling}}</td>
                             <td>{{$dt->ProdName}}</td>
-                            <td>{{$dt->AlamatCust}}</td>
-                            <td>{{$dt->NamaPIC}}</td>
-                            <td>{{$dt->NoHPPIC}}</td>
+                            <td>{{number_format($dt->NilaiLayanan, 0, ',', '.')}}</td>  
                             <td>{{$dt->EndDate}}</td>
                         </tr>
                     @empty

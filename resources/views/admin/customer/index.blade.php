@@ -18,8 +18,8 @@
                         <th>Alamat Customer</th>
                         <th>Nama PIC</th>
                         <th>No HP PIC</th>
-                        <th>NAMA AM</th>
                         <th>Email Customer</th>
+                        <th>NAMA AM</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -33,8 +33,8 @@
                             <td>{{$cust->AlamatCust}}</td>
                             <td>{{$cust->NamaPIC}}</td>
                             <td>{{$cust->NoHPPIC}}</td>
-                            <td>{{$cust->accountManager->NamaAM ?? 'NULL' }}</td>
                             <td>{{$cust->EmailCust}}</td>
+                            <td>{{$cust->accountManager->NamaAM ?? 'NULL' }}</td>
                             <td>
                                 <div class="d-flex align-items-center">
                                     <a href="{{ route('admin.customer.edit', $cust->NoBilling) }}" class="btn btn-warning btn-sm" style="margin-right: 10px;">Edit</a>

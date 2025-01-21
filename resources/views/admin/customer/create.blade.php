@@ -41,9 +41,9 @@
             </div>
 
             <div class="form-group">
-                <label for="NIKAM">Pilih NIKAM</label>
+                <label for="NIKAM">Pilih AM</label>
                 <select name="NIKAM" id="NIKAM" class="form-control" required>
-                    <option value="">-- Pilih NIKAM --</option>
+                    <option value="">-- Pilih AM --</option>
                     @foreach($nikamOptions as $option)
                         <option value="{{ $option->NIKAM }}">{{ $option->NamaAM }}</option>
                     @endforeach
