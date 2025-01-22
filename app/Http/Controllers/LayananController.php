@@ -29,7 +29,9 @@ class LayananController extends Controller
                 'ProdName' => 'required',
                 'Bandwidth' => 'required',
                 'Satuan' => 'required',
+                'Jumlah' => 'required',
                 'NilaiLayanan' => 'required|numeric|min:0',
+                'Deskripsi' => 'required',
             ]);
 
             $layanan = Layanan::create($validatedData);
@@ -53,9 +55,21 @@ class LayananController extends Controller
             $request->validate([
                 'NoBilling' => 'required|exists:datacustomer,NoBilling',
                 'ProdName' => 'required|string|max:255',
-                'Bandwidth' => 'required|numeric|min:0',
+                'Bandwidth' => [
+                                'required',
+                                    function ($attribute, $value, $fail) use ($request) {
+                                        if ($request->Satuan === 'MBPS' && !is_numeric($value)) {
+                                            $fail('Kolom Bandwidth harus berupa angka jika satuan adalah MBPS.');
+                                        }
+                                        if ($request->Satuan !== 'MBPS' && $value !== '-') {
+                                            $fail('Kolom Bandwidth harus berisi "-" jika satuan bukan MBPS.');
+                                        }
+                                    },
+                                ],
                 'Satuan' => 'required|string|min:0',
+                'Jumlah' => 'required|numeric|min:0',
                 'NilaiLayanan' => 'required|numeric|min:0',
+                'Deskripsi' => 'required|string|min:0',
             ]);
 
         

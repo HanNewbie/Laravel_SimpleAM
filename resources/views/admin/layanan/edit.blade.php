@@ -36,7 +36,13 @@
             
             <div class="form-group">
                 <label for="Bandwidth">Bandwidth</label>
-                <input type="number" name="Bandwidth" id="Bandwidth" class="form-control" value="{{ old('Bandwidth', $layanan->Bandwidth) }}" required>
+                <input 
+                    type="text" 
+                    name="Bandwidth" 
+                    id="Bandwidth" 
+                    class="form-control" 
+                    value="{{ old('Bandwidth') }}" 
+                    required>
             </div>
 
             <div class="form-group">
@@ -49,15 +55,41 @@
                     <option value="ORANG" {{ old('Satuan') == 'ORANG' ? 'selected' : '' }}>ORANG</option>
                 </select>
             </div>
-            
 
+            <div class="form-group">
+                <label for="Jumlah">Jumlah</label>
+                <input type="number" name="Jumlah" id="Jumlah" class="form-control" value="{{ old('Jumlah', $layanan->Jumlah) }}" required>
+            </div>
+            
             <div class="form-group">
                 <label for="NilaiLayanan">Nilai Layanan</label>
                 <input type="number" name="NilaiLayanan" id="NilaiLayanan" class="form-control" value="{{ old('NilaiLayanan', $layanan->NilaiLayanan) }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Deskripsi">Deskripsi</label>
+                <input type="text" name="Deskripsi" id="Deskripsi" class="form-control" value="{{ old('Deskripsi', $layanan->Deskripsi) }}" required>
             </div>
 
             <button type="submit" class="btn btn-primary">Update Data</button>
         </form>
     </div>
 </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const satuanSelect = document.getElementById('Satuan');
+                const bandwidthInput = document.getElementById('Bandwidth');
+
+                satuanSelect.addEventListener('change', function () {
+                    if (this.value !== 'MBPS') {
+                        bandwidthInput.value = '-';
+                        bandwidthInput.setAttribute('readonly', true);
+                    } else {
+                        bandwidthInput.value = '';
+                        bandwidthInput.removeAttribute('readonly');
+                    }
+                });
+            });
+        </script>
 @endsection

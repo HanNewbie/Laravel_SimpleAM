@@ -19,7 +19,7 @@
                         <th>Nama PIC</th>
                         <th>No HP PIC</th>
                         <th>Email Customer</th>
-                        <th>NAMA AM</th>
+                        <th>Nama AM</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>

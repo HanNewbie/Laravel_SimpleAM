@@ -14,10 +14,12 @@
                         <th>No</th>
                         <th>Nomor Billing</th>
                         <th>SID</th>
-                        <th>Product Name</th>
-                        <th>Bandwith</th>
+                        <th>Nama Produk</th>
+                        <th>Bandwidth</th>
                         <th>Satuan</th>
+                        <th>Jumlah</th>
                         <th>Nilai Layanan</th>
+                        <th>Deskripsi</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -30,7 +32,9 @@
                             <td>{{$lyn->ProdName}}</td>
                             <td>{{$lyn->Bandwidth}}</td>
                             <td>{{$lyn->Satuan}}</td>
+                            <td>{{$lyn->Jumlah}}</td>
                             <td>{{number_format($lyn->NilaiLayanan, 0, ',', '.')}}</td>
+                            <td>{{$lyn->Deskripsi}}</td>
                             <td>
                                 <div class="d-flex align-items-center">
                                     <a href="{{ route('admin.layanan.edit', $lyn->SID) }}" class="btn btn-warning btn-sm" style="margin-right: 10px;">Edit</a>

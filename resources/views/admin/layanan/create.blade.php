@@ -7,7 +7,7 @@
         <a href="{{ route('admin.layanan.index') }}" class="btn btn-primary">Kembali</a>
     </div>
     <div class="card-body">
-        <form action="{{ route('admin.layanan.store') }}" method="POST">
+        <form id="layananForm" action="{{ route('admin.layanan.store') }}" method="POST">
             @csrf
             
             <div class="form-group">
@@ -32,7 +32,7 @@
             
             <div class="form-group">
                 <label for="Bandwidth">Bandwidth</label>
-                <input type="number" name="Bandwidth" id="Bandwidth" class="form-control" value="{{ old('Bandwidth') }}" required>
+                <input type="text" name="Bandwidth" id="Bandwidth" class="form-control" value="{{ old('Bandwidth') }}" required>
             </div>
 
             <div class="form-group">
@@ -47,12 +47,40 @@
             </div>            
 
             <div class="form-group">
+                <label for="Jumlah">Jumlah</label>
+                <input type="number" name="Jumlah" id="Jumlah" class="form-control" value="{{ old('Jumlah') }}" required>
+            </div>
+
+            <div class="form-group">
                 <label for="NilaiLayanan">Nilai Layanan</label>
                 <input type="number" name="NilaiLayanan" id="NilaiLayanan" class="form-control" value="{{ old('NilaiLayanan') }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Deskripsi">Deskripsi</label>
+                <input type="text" name="Deskripsi" id="Deskripsi" class="form-control" value="{{ old('Deskripsi') }}" required>
             </div>
 
             <button type="submit" class="btn btn-primary">Tambah Data</button>
         </form>
     </div>
 </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const satuanSelect = document.getElementById('Satuan');
+                const bandwidthInput = document.getElementById('Bandwidth');
+
+                satuanSelect.addEventListener('change', function () {
+                    if (this.value !== 'MBPS') {
+                        bandwidthInput.value = '-';
+                        bandwidthInput.setAttribute('readonly', true);
+                    } else {
+                        bandwidthInput.value = '';
+                        bandwidthInput.removeAttribute('readonly');
+                    }
+                });
+            });
+        </script>
 @endsection
+

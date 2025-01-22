@@ -11,7 +11,7 @@ class Layanan extends Model
     public $timestamps = false; 
     protected $primaryKey = 'SID'; 
     public $incrementing = false; 
-    protected $fillable = ['NoBilling', 'SID', 'ProdName', 'Bandwidth', 'Satuan', 'NilaiLayanan'];
+    protected $fillable = ['NoBilling', 'SID', 'ProdName', 'Bandwidth', 'Satuan', 'Jumlah', 'NilaiLayanan', 'Deskripsi'];
 
     public function datacustomer()
     {
