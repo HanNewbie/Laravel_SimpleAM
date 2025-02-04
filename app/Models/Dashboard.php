@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Dashboard extends Model
 {
-    protected $table = 'viewsemuanya';
+    protected $table = 'viewall';
 
     public $timestamps = false;
 

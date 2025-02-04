@@ -17,11 +17,10 @@ return new class extends Migration
             $table->integer('NIPNAS')->nullable();
             $table->string('AlamatCust', 255)->nullable();
             $table->string('NamaPIC', 255)->nullable();
-            $table->string('NoHPPIC', 20)->nullable();
+            $table->string('NoHPPIC', 13)->nullable();
             $table->integer('NIKAM')->nullable();
             $table->string('EmailCust', 55)->nullable();
 
-            // Foreign key constraint
             $table->foreign('NIKAM')->references('NIKAM')->on('accountmanager')->onDelete('set null');
         });
     }

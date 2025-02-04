@@ -15,11 +15,10 @@ return new class extends Migration
             $table->integer('NIKAM')->primary();
             $table->string('NamaAM', 255)->nullable();
             $table->integer('IdSegmen')->nullable();
-            $table->integer('NoHP')->nullable();
+            $table->string('NoHP', 13)->nullable();
             $table->string('Email', 55)->nullable();
             $table->string('IdTelegram', 55)->nullable();
 
-            // Foreign key constraint
             $table->foreign('IdSegmen')->references('IdSegmen')->on('segmen')->onDelete('restrict')->onUpdate('restrict');
         });
     }

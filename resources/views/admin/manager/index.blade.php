@@ -12,7 +12,7 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>NIKAM</th>
+                        <th>NIK AM</th>
                         <th>Nama</th>
                         <th>SEGMEN</th>
                         <th>No HP</th>

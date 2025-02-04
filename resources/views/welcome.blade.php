@@ -8,12 +8,14 @@
             <label for="segmen" class="form-label mb-0">Filter Segmen:</label>
             <select name="segmen" id="segmen" class="form-select form-select-sm w-auto">
                 <option value="">Semua</option>
-                <option value="DBS" {{ request('segmen') == 'DBS' ? 'selected' : '' }}>DBS</option>
-                <option value="DGS" {{ request('segmen') == 'DGS' ? 'selected' : '' }}>DGS</option>
-                <option value="DES" {{ request('segmen') == 'DES' ? 'selected' : '' }}>DES</option>
+                @foreach ($segmenList as $segmen)
+                    <option value="{{ $segmen->NamaSegmen }}" {{ request('segmen') == $segmen->NamaSegmen ? 'selected' : '' }}>
+                        {{ $segmen->NamaSegmen }}
+                    </option>
+                @endforeach
             </select>
             <button type="submit" class="btn btn-sm btn-primary">Filter</button>
-        </form>
+        </form>       
     </div>
     
     <div class="card-body">

@@ -12,7 +12,7 @@
             @method('PUT')
 
             <div class="form-group">
-                <label for="NIKAM">NIKAM</label>
+                <label for="NIKAM">NIK AM</label>
                 <input type="text" id="NIKAM" class="form-control" value="{{ $accountmanager->NIKAM }}" readonly>
             </div>
 

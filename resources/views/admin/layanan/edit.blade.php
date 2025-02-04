@@ -36,26 +36,20 @@
             
             <div class="form-group">
                 <label for="Bandwidth">Bandwidth</label>
-                <input 
-                    type="text" 
-                    name="Bandwidth" 
-                    id="Bandwidth" 
-                    class="form-control" 
-                    value="{{ old('Bandwidth') }}" 
-                    required>
+                <input type="text" name="Bandwidth" id="Bandwidth" class="form-control" value="{{ old('Bandwidth', $layanan->Bandwidth) }}" required>
             </div>
 
             <div class="form-group">
                 <label for="Satuan">Satuan</label>
                 <select name="Satuan" id="Satuan" class="form-control" required>
                     <option value="">--Pilih Satuan--</option>
-                    <option value="MBPS" {{ old('Satuan') == 'MBPS' ? 'selected' : '' }}>MBPS</option>
-                    <option value="PAKET" {{ old('Satuan') == 'PAKET' ? 'selected' : '' }}>PAKET</option>
-                    <option value="UNIT" {{ old('Satuan') == 'UNIT' ? 'selected' : '' }}>UNIT</option>
-                    <option value="ORANG" {{ old('Satuan') == 'ORANG' ? 'selected' : '' }}>ORANG</option>
+                    <option value="MBPS" {{ old('Satuan', $layanan->Satuan) == 'MBPS' ? 'selected' : '' }}>MBPS</option>
+                    <option value="PAKET" {{ old('Satuan', $layanan->Satuan) == 'PAKET' ? 'selected' : '' }}>PAKET</option>
+                    <option value="UNIT" {{ old('Satuan', $layanan->Satuan) == 'UNIT' ? 'selected' : '' }}>UNIT</option>
+                    <option value="ORANG" {{ old('Satuan', $layanan->Satuan) == 'ORANG' ? 'selected' : '' }}>ORANG</option>
                 </select>
             </div>
-
+            
             <div class="form-group">
                 <label for="Jumlah">Jumlah</label>
                 <input type="number" name="Jumlah" id="Jumlah" class="form-control" value="{{ old('Jumlah', $layanan->Jumlah) }}" required>

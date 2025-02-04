@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Kontrak;
 use App\Models\Customer;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str; 
 
 class KontrakController extends Controller
 {
@@ -25,7 +24,7 @@ class KontrakController extends Controller
     {
         try {
             $request->validate([
-                'NoKontrak' => 'required|string|max:255',
+                'NoKontrak' => 'required|string|max:50',
                 'NoBilling' => 'required|exists:datacustomer,NoBilling',
                 'FirstDate' => 'required|date',
                 'EndDate' => 'required|date',
@@ -57,7 +56,7 @@ class KontrakController extends Controller
     public function update(Request $request, $Id)
     {        
         $request->validate([
-           'NoKontrak' => 'required|string|max:255',
+           'NoKontrak' => 'required|string|max:50',
             'NoBilling' => 'required|exists:datacustomer,NoBilling',
             'FirstDate' => 'required|date',
             'EndDate' => 'required|date',

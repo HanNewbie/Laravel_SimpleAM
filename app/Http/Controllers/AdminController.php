@@ -1,5 +1,5 @@
 <?php
-
+/*
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -46,3 +46,4 @@ class AdminController extends Controller
         return redirect()->route('login')->withSuccess('Profile updated successfully.');
     }
 }
+*/

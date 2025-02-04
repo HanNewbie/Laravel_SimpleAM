@@ -25,12 +25,12 @@ class ManagerController extends Controller
         try {
             $request->validate([
                 'NIKAM' => 'required|unique:accountmanager,NIKAM',
-                'NamaAM' => 'required',
+                'NamaAM' => 'required|string|max:255',
                 'IdSegmen' => 'required|exists:segmen,IdSegmen',
-                'NoHP' => 'required',
-                'Email' => 'required|email',
-                'IdTelegram' => 'required',
-            ]);
+                'NoHP' => 'required|string|max:13',
+                'Email' => 'required|email|string|max:55',
+                'IdTelegram' => 'required|string|max:55',
+            ]); 
 
             Manager::create($request->all());
 
@@ -51,9 +51,9 @@ class ManagerController extends Controller
         try {
             $request->validate([
                 'NamaAM' => 'required|string|max:255',
-                'NoHP' => 'required|string|max:255',
-                'Email' => 'required|email|max:255',
-                'IdTelegram' => 'required|string|max:255',
+                'NoHP' => 'required|string|max:13',
+                'Email' => 'required|email|string|max:55',
+                'IdTelegram' => 'required|string|max:55',
             ]);
 
             $accountmanager = Manager::findOrFail($NIKAM);

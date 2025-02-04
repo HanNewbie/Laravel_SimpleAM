@@ -21,18 +21,18 @@ class CustomerController extends Controller
         return view('admin.customer.create', compact('nikamOptions'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request)//
     {
         try {        
             $request->validate([
-            'NamaCust' => 'required',
+            'NamaCust' => 'required|string|max:255',
             'NoBilling' => 'required|unique:datacustomer,NoBilling',
-            'NIPNAS' => 'required',
-            'AlamatCust' => 'required',
-            'NamaPIC' => 'required',
-            'NoHPPIC' => 'required',
+            'NIPNAS' => 'required|numeric',
+            'AlamatCust' => 'required|string|max:255',
+            'NamaPIC' => 'required|string|max:255',
+            'NoHPPIC' => 'required|string|max:255',
             'NIKAM' => 'required|exists:accountmanager,NIKAM', 
-            'EmailCust' => 'required|email',
+            'EmailCust' => 'required|email|string|max:55',
              ]);
 
         Customer::create($request->all());
@@ -55,13 +55,12 @@ class CustomerController extends Controller
         try {
             $request->validate([
                 'NamaCust' => 'required|string|max:255',
-                'NoBilling' => 'required|string|max:255',
-                'NIPNAS' => 'required|string|max:255',
+                'NIPNAS' => 'required|numeric',
                 'AlamatCust' => 'required|string|max:255',
                 'NamaPIC' => 'required|string|max:255',
                 'NoHPPIC' => 'required|string|max:15',
                 'NIKAM' => 'required|exists:accountmanager,NIKAM', 
-                'EmailCust' => 'required|email|max:255',
+                'EmailCust' => 'required|email|string|max:55',
             ]);
             
             $customer = Customer::findOrFail($NoBilling);
@@ -71,7 +70,7 @@ class CustomerController extends Controller
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Terjadi kesalahan saat memperbarui data. '.$e->getMessage());
         }
-}
+    }
 
 
     public function destroy(Customer $NoBilling)

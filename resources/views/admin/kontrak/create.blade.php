@@ -20,7 +20,7 @@
                 <select name="NoBilling" class="form-control" id="NoBilling" required>
                     <option value="">--PILIH NO BILLING--</option>
                     @foreach($NoBilling as $nbl)
-                        <option value="{{ $nbl->NoBilling }}">{{ $nbl->NoBilling }}</option>
+                        <option value="{{ $nbl->NoBilling }}">{{ $nbl->NoBilling }} - {{ $nbl->NamaCust }}</option>
                     @endforeach
                 </select>
             </div>

@@ -11,7 +11,7 @@
             @csrf
 
             <div class="form-group">
-                <label for="NIKAM">NIKAM</label>
+                <label for="NIKAM">NIK AM</label>
                 <input type="text" name="NIKAM" id="NIKAM" class="form-control" value="{{ old('NIKAM') }}" required>
             </div>
 
