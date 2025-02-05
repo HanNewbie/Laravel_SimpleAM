@@ -8,20 +8,23 @@ use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
+    //FUNGSI UNTUK MENAMPILKAN DATA CUSTOMER
     public function index()
     {
         $datacustomer = Customer::with('accountManager')->get();
         
         return view('admin.customer.index', ['datacustomer'=>$datacustomer]);
     }
-
-     public function create()
+    
+    //FUNGSI MENGALIHKAN KE HALAMAN TAMBAH DATA DENGAN MENGAMBIL DATA NIKAM DARI TABEL ACCOUNT MANAGER
+    public function create()
     {
         $nikamOptions = Manager::all(); 
         return view('admin.customer.create', compact('nikamOptions'));
     }
 
-    public function store(Request $request)//
+    //FUNGSI UNTUK MENYIMPAN DATA YANG DIINPUTKAN PADA HALAMAN TAMBAH DATA
+    public function store(Request $request)
     {
         try {        
             $request->validate([
@@ -43,6 +46,7 @@ class CustomerController extends Controller
         }
     }
 
+    //FUNGSI UNTUK MENGALIHKAN KE HALAMAN EDIT DATA DENGAN MENGAMBIL DATA CUSTOMER DAN NIKAM BERDASARKAN NOBILLING
     public function edit($NoBilling)
     {
         $datacustomer = Customer::findOrFail($NoBilling);
@@ -50,6 +54,7 @@ class CustomerController extends Controller
         return view('admin.customer.edit', compact('datacustomer', 'nikamOptions'));
     }
 
+    //FUNGSI UNTUK MENGUPDATE DATA CUSTOMER BERDASARKAN NOBILLING
     public function update(Request $request, $NoBilling)
     {
         try {
@@ -72,7 +77,7 @@ class CustomerController extends Controller
         }
     }
 
-
+    //FUNGSI UNTUK MENGHAPUS DATA CUSTOMER BERDASARKAN NOBILLING
     public function destroy(Customer $NoBilling)
     {
         try {

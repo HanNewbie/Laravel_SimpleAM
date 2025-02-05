@@ -9,6 +9,7 @@ use App\Models\Segmen;
 
 class DashboardController extends Controller
 {
+    //FUNGSI UNTUK MENAMPILKAN DATA DASHBOARD
     public function index(Request $request)
     {
         $segmenList = Dashboard::select('NamaSegmen')->distinct()->get();

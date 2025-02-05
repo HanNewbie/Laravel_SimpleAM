@@ -8,18 +8,21 @@ use Illuminate\Http\Request;
 
 class LayananController extends Controller
 {
+    //FUNGSI UNTUK MENAMPILKAN DATA LAYANAN
     public function index()
     {
        $layanan = Layanan::with('datacustomer')->get();
        return view('admin.layanan.index', ['layanan'=>$layanan]);
     }
 
+    //FUNGSI MENGALIHKAN KE HALAMAN TAMBAH DATA DENGAN MENGAMBIL DATA NOBILLING DARI TABEL DATACUSTOMER
     public function create()
     {
         $NoBilling  = Customer::all();
         return view('admin.layanan.create', compact('NoBilling'));
     }
 
+    //FUNGSI UNTUK MENYIMPAN DATA YANG DIINPUTKAN PADA HALAMAN TAMBAH DATA
     public function store(Request $request)
     {
         try {
@@ -42,6 +45,7 @@ class LayananController extends Controller
         }
     }
     
+    //FUNGSI UNTUK MENGALIHKAN KE HALAMAN EDIT DATA DENGAN MENGAMBIL DATA LAYANAN DAN NOBILLING BERDASARKAN SID
     public function edit($SID)
     {
         $layanan = Layanan::findOrFail($SID);
@@ -49,6 +53,7 @@ class LayananController extends Controller
         return view('admin.layanan.edit', compact('layanan', 'NoBilling'));
     }  
 
+    //FUNGSI UNTUK MENGUPDATE DATA LAYANAN BERDASARKAN SID
     public function update(Request $request, $SID)
     {
         try {
@@ -80,6 +85,7 @@ class LayananController extends Controller
         }
     }
 
+    //FUNGSI UNTUK MENGHAPUS DATA LAYANAN BERDASARKAN SID
     public function destroy(Layanan $SID)
     {
         try {

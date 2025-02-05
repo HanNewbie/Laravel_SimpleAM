@@ -12,6 +12,7 @@ class Kontrak extends Model
     public $incrementing = false; 
     protected $fillable = ['Id', 'NoKontrak', 'NoBilling', 'FirstDate', 'EndDate'];
 
+    //RELASI KE TABEL DATACUSTOMER
     public function datacustomer()
     {
         return $this->belongsTo(Customer::class, 'NoBilling', 'NoBilling');

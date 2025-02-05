@@ -8,18 +8,21 @@ use Illuminate\Http\Request;
 
 class ManagerController extends Controller
 {
+    //FUNGSI UNTUK MENAMPILKAN DATA MANAGER
     public function index()
     {
        $accountmanager = Manager::with('segmen')->get();
        return view('admin.manager.index', ['accountmanager'=>$accountmanager]);
     }
 
+    //FUNGSI MENGALIHKAN KE HALAMAN TAMBAH DATA DENGAN MENGAMBIL DATA IDSEGEMEN DARI TABEL SEGEMEN
     public function create()
     {
         $segmen = Segmen::all();
         return view('admin.manager.create', compact('segmen'));
     }
 
+    //FUNGSI UNTUK MENYIMPAN DATA YANG DIINPUTKAN PADA HALAMAN TAMBAH DATA
     public function store(Request $request)
     {
         try {
@@ -40,12 +43,14 @@ class ManagerController extends Controller
         }
     }
 
+    //FUNGSI UNTUK MENGALIHKAN KE HALAMAN EDIT DATA DENGAN MENGAMBIL DATA MANAGER BERDASARKAN NIKAM
     public function edit($NIKAM)
     {
         $accountmanager = Manager::findOrFail($NIKAM);
         return view('admin.manager.edit', compact('accountmanager'));
     }   
 
+    //FUNGSI UNTUK MENGUPDATE DATA MANAGER BERDASARKAN NIKAM
     public function update(Request $request, $NIKAM)
     {
         try {
@@ -64,6 +69,7 @@ class ManagerController extends Controller
         }
     }
 
+    //FUNGSI UNTUK MENGHAPUS DATA MANAGER BERDASARKAN NIKAM
     public function destroy(Manager $NIKAM)
     {
         try {

@@ -12,6 +12,7 @@ class Manager extends Model
     public $incrementing = false; 
     protected $fillable = ['NIKAM', 'NamaAM', 'IdSegmen', 'NoHP', 'Email', 'IdTelegram'];
 
+    //RELASI KE TABEL SEGMEN
     public function segmen()
     {
         return $this->belongsTo(Segmen::class, 'IdSegmen', 'IdSegmen');

@@ -8,18 +8,21 @@ use Illuminate\Http\Request;
 
 class KontrakController extends Controller
 {
+    //FUNGSI UNTUK MENAMPILKAN DATA KONTRAK
     public function index()
     {
        $kontrak = Kontrak::with('datacustomer')->get();
        return view('admin.kontrak.index', ['kontrak'=>$kontrak]);
     }
 
+    //FUNGSI MENGALIHKAN KE HALAMAN TAMBAH DATA DENGAN MENGAMBIL DATA NOBILLING DARI TABEL DATACUSTOMER
     public function create()
     {
         $NoBilling  = Customer::all();
         return view('admin.kontrak.create', compact('NoBilling'));
     }
 
+    //FUNGSI UNTUK MENYIMPAN DATA YANG DIINPUTKAN PADA HALAMAN TAMBAH DATA
     public function store(Request $request)
     {
         try {
@@ -46,6 +49,7 @@ class KontrakController extends Controller
         }
     }
 
+    //FUNGSI UNTUK MENGALIHKAN KE HALAMAN EDIT DATA DENGAN MENGAMBIL DATA KONTRAK DAN NOBILLING BERDASARKAN ID
     public function edit($Id)
     {
         $kontrak = Kontrak::findOrFail($Id);
@@ -53,6 +57,7 @@ class KontrakController extends Controller
         return view('admin.kontrak.edit', compact('kontrak', 'NoBilling'));
     }  
 
+    //FUNGSI UNTUK MENGUPDATE DATA KONTRAK BERDASARKAN ID
     public function update(Request $request, $Id)
     {        
         $request->validate([
@@ -71,6 +76,7 @@ class KontrakController extends Controller
         }
     }
 
+    //FUNGSI UNTUK MENGHAPUS DATA KONTRAK BERDASARKAN ID
     public function destroy(Kontrak $Id)
     {
         try {

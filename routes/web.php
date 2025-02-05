@@ -25,6 +25,7 @@ use App\Http\Controllers\DashboardController;
 
 Route::get('/', [DashboardController::class, 'index']);
 
+//ROUTE CUSTOMER
 Route::get('/customer', [CustomerController::class, 'index'])->name('admin.customer.index');
 Route::get('/customer/create', [CustomerController::class, 'create'])->name('admin.customer.create');
 Route::post('/customer', [CustomerController::class, 'store'])->name('admin.customer.store');

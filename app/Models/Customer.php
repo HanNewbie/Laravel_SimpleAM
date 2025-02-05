@@ -15,6 +15,7 @@ class Customer extends Model
         'NamaCust', 'NoBilling', 'NIPNAS', 'AlamatCust', 'NamaPIC', 'NoHPPIC', 'NIKAM', 'EmailCust'
     ];
 
+    //RELASI KE TABEL ACCOUNT MANAGER
     public function accountManager()
     {
         return $this->belongsTo(Manager::class, 'NIKAM', 'NIKAM');

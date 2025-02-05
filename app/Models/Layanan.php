@@ -13,6 +13,7 @@ class Layanan extends Model
     public $incrementing = false; 
     protected $fillable = ['NoBilling', 'SID', 'ProdName', 'Bandwidth', 'Satuan', 'Jumlah', 'NilaiLayanan', 'Deskripsi'];
 
+    //RELASI KE TABEL DATACUSTOMER
     public function datacustomer()
     {
         return $this->belongsTo(Customer::class, 'NoBilling', 'NoBilling');
