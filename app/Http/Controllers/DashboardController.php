@@ -20,6 +20,6 @@ class DashboardController extends Controller
             return $query->where('NamaSegmen', $filterSegmen);
         })->get();
     
-        return view('welcome', compact('data', 'filterSegmen', 'segmenList'));
+        return view('dashboard', compact('data', 'filterSegmen', 'segmenList'));
     }
 }
